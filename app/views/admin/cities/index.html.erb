@@ -1,0 +1,36 @@
+
+<section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Cities</h1>
+          <p class="lead text-muted"> These are the world class cities we provide our hotels in.</p>
+          <p>
+            <%= link_to("Add New city", {action: "new"}, class: "action new btn btn-primary my-2") %>
+            <%= link_to("Back to Home Page", root_path, class: "btn btn-primary my-2") %>
+            <%= link_to "Admin Page", static_pages_adminpage_path, class: "btn btn-primary my-2" %>
+          </p>
+        </div>
+</section>
+
+
+<table class="listing" summary="city list">
+<thead class="thead-dark">
+  <tr class = "header">
+    <th>Id</th>
+    <th>Name</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @cities.each do |city| %>
+    <tr>
+      <td><%= city.id %></td>
+      <td><%= city.name %></td>
+      <td class = "actions">
+        <%= link_to("Show", admin_city_path(city), class: "action show") %>
+        <%= link_to("Edit", edit_admin_city_path(city), class: "action edit") %>
+        <%= link_to("Delete", admin_city_path(city), data: {confirm: "ARE YOU SURE?"}, method: :delete, class: "action delete") %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

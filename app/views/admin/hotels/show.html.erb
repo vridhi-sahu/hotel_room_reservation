@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<head>
+<script>
+<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key='+Rails.application.credentials.google_maps_api_key %>
+<%= javascript_include_tag "application" %>
+<% provide :head_tags do %>
+  <meta name='turbolinks-visit-control' content='reload'>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      initMap(<%=@hotel.latitude%>, <%=@hotel.longitude%>)
+    });
+  </script>
+<% end %>
+
+</head>
+<%= link_to("<< Back to index list", {action: "index"}, class: "back_to_link") %>
+<div class = "hotels show">
+  <h2>Show hotel details</h2>
+  <table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Hotel Name</th>
+      <th scope="col">City</th>
+      <th scope="col">Singleroom</th>
+      <th scope="col">Doubleroom</th>
+      <th scope="col">Suite</th>
+      <th scope="col">Dormitory</th>
+      <th scope="col">latitude</th>
+      <th scope="col">longitude</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td><%=  @hotel.name %></td>
+      <td><%= @hotel.city.name %></td>
+      <td><%=  @hotel.single_bedroom_num %></td>
+      <td><%=  @hotel.double_bedroom_num %></td>
+      <td><%=  @hotel.suite_room_num %></td>
+      <td><%=  @hotel.dormitory_room_num %></td>\
+      <td><%=  @hotel.latitude %></td>
+      <td><%=  @hotel.longitude %></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>
+    <div id="map">
+    function initMap(lat, lng) {    var myCoords = new google.maps.LatLng(lat, lng);    var mapOptions = {
+    center: myCoords,
+    zoom: 14
+    };    var map = new google.maps.Map(document.getElementById('map'), mapOptions);    var marker = new google.maps.Marker({
+        position: myCoords,
+        map: map
+    });}</div>
+    
+</p>
+
+<div style='width: 800px;'>  
+  <div id="map" style='width: 800px; height: 400px;'></div>  
+</div>  
+
+<script type="text/javascript">  
+handler = Gmaps.build('Google');  
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){  
+  markers = handler.addMarkers([  
+    {  
+      "lat": 37.3333945,  
+      "lng": -121.8806499,  
+      "picture": {  
+        "width":  32,  
+        "height": 32  
+      },  
+      "infowindow": "SJSU"  
+    }  
+  ]);  
+  handler.bounds.extendWith(markers);  
+  handler.fitMapToBounds();  
+});  
+</script>
+
+
+</html>
+
+
+

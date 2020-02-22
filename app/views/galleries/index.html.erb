@@ -1,0 +1,43 @@
+<main role="main">
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">IMAGE GALLERY</h1>
+          <p class="lead text-muted">We offer the best hotels across the world.</p>
+          <p>
+            <%= link_to("Back to Home Page", root_path, class: "btn btn-primary my-2") %>
+          </p>
+        </div>
+      </section>
+
+    <% if @images.count!=0 %>
+    <div class = "row container ">
+    <% @images.each do |image| %>
+      <div class = "col-md-3 col-sm-12 my-3" data-toggle = "modal" data-target = "#<%= image.picture_file_name.split(".").first %>">
+        <%= image_tag(image.picture.url(:thumb), alt: "#{image.picture_file_name}")%>
+
+        <div class="modal fade" id="<%= image.picture_file_name.split(".").first %>">
+          <div class = "modal-dialog modal-dialog-centered">
+            <div class = "modal-content">
+              <div class = "modal-body">
+              <figure>
+                <%= link_to image.picture(:original) do %>
+                <%= image_tag(image.picture.url(:thumb), alt: "No image found") %>
+              <% end %>
+              <figcaption><%= image.picture_file_name%></figcaption>
+              </figure>             
+              </div>
+              <div class = "modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class = "text-danger">No photos uploaded yet</div>
+<% end %>
+</main>
+
+

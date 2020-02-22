@@ -1,0 +1,86 @@
+<div class="container">
+<div class="row">
+    <div class="col-md-12 min-vh-60 d-flex flex-column justify-content-center">
+        <div class="row">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <!-- form card  -->
+                <div class="card rounded shadow shadow-sm">
+                    <div class="card-header">
+                        <h3 class="mb-0">Hotel</h3>
+                    </div>
+                    <div class="card-body">
+                    <%= form_for [:admin, @hotel] do |f| %>
+                        <%= render(partial: "error_refer/error", locals: { target: @hotel }) %>
+
+                        <div class = "form-group">
+                          <%= f.label :name, "Name of Hotel "%>
+                          <%= f.text_field :name, placeholder: "Enter your name", class: "form-control" %>
+                        </div>
+ 
+                        <div class ="form-group">
+                          <%= f.label :city, "Select City"%>
+                          <%= f.collection_select(:city_id, City.all, :id, :name, prompt: "Select") %>
+                        </div>
+
+                        <div class ="form-group">
+                          <%= f.label :address, "Address of Hotel"%>
+                          <%= f.text_field :address, placeholder: "address", class: "form-control" %>
+                        </div>
+
+                        <div class="form-group">
+                          <%= f.label :picture, "Upload Image of the hotel" %><br/>
+                          <%= f.file_field :picture  %>
+                        </div>
+
+                        <div class = "form-group">
+                          <%= f.label :single_bedroom_price, "Single bedroom price:"%>
+                          <%= f.text_field :single_bedroom_price, placeholder: "Enter price per room", class: "form-control" %>
+                        </div>
+
+                        <div class = "form-group">
+                          <%= f.label :double_bedroom_price, "Double bedroom price:"%>
+                          <%= f.text_field :double_bedroom_price, placeholder: "Enter price per room", class: "form-control" %>
+                        </div>
+
+                        <div class = "form-group">
+                          <%= f.label :suite_room_price, "Suite room price :"%>
+                          <%= f.text_field :suite_room_price, placeholder: "Enter price per room", class: "form-control" %>
+                        </div>
+
+                        <div class = "form-group">
+                          <%= f.label :dormitory_room_price, "Dormitory room price :"%>
+                          <%= f.text_field :dormitory_room_price, placeholder: "Enter price per room", class: "form-control" %>
+                        </div>
+                       
+                        <div class = "form-group">
+                          <%= f.submit "Submit", class: "btn btn-primary" %>
+                        </div>
+
+                        <div class="container-border bg-white py-2 px-4 my-3">
+                          <div class="row">
+                            <%= f.hidden_field :latitude %>
+                            <%= f.hidden_field :longitude %>
+                            <div id=hotel_map_marker"></div>
+                          </div>
+                        </div>
+
+                      <% end %>
+                    </div>
+                    <!--/card-block-->
+                </div>
+                <!-- /form card login -->
+            </div>
+        </div>
+        <!--/row-->
+    </div>
+    <!--/col-->
+</div>
+<!--/row-->
+</div>
+<!--/container-->
+
+
+
+
+
+

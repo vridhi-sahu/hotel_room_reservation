@@ -1,0 +1,11 @@
+<% if target.errors.any? %>
+<div id="error_explain">
+  <h2><%=pluralize(target.errors.count, "error") %> prohibited this.</h2>
+  <ul>
+  
+    <% target.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>

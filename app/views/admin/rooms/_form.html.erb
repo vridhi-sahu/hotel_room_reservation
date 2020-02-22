@@ -1,0 +1,52 @@
+<div class="container">
+<div class="row">
+    <div class="col-md-12 min-vh-60 d-flex flex-column justify-content-center">
+        <div class="row">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <!-- form card  -->
+                <div class="card rounded shadow shadow-sm">
+                    <div class="card-header">
+                        <h3 class="mb-0">Room</h3>
+                    </div>
+                    <div class="card-body">
+                    
+                      <%= form_for [:admin, @room] do |f| %>
+                        <%= render(partial: "error_refer/error", locals: { target: @room }) %>
+
+                        <div class = "form-group">
+                          <%= f.label :single_bedroom_num, "No. of singlebed rooms:"%>
+                          <%= f.text_field :single_bedroom_num, placeholder: "Enter availability", class: "form-control" %>
+                        </div>
+
+                        <div class = "form-group">
+                          <%= f.label :double_bedroom_num, "No. of double_bedroom_num rooms:"%>
+                          <%= f.text_field :double_bedroom_num, placeholder: "Enter availability", class: "form-control" %>
+                        </div>
+
+                        <div class = "form-group">
+                          <%= f.label :suite_room_num, "No. of suite_room_num rooms:"%>
+                          <%= f.text_field :suite_room_num, placeholder: "Enter availability", class: "form-control" %>
+                        </div>
+
+                        <div class = "form-group">
+                          <%= f.label :dormitory_room_num, "No. of dormitory_room_num rooms:"%>
+                          <%= f.text_field :dormitory_room_num, placeholder: "Enter availability", class: "form-control" %>
+                        </div>
+ 
+                        <div class = "form-group">
+                          <%= f.submit "Submit", class: "btn btn-primary" %>
+                        </div>
+                      <% end %>
+                    </div>
+                    <!--/card-block-->
+                </div>
+                <!-- /form card login -->
+            </div>
+        </div>
+        <!--/row-->
+    </div>
+    <!--/col-->
+</div>
+<!--/row-->
+</div>
+<!--/container-->

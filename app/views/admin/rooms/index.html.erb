@@ -1,0 +1,30 @@
+<h2>Rooms</h2>
+<%= link_to("Back to Home Page", root_path) %> <br>
+<%= link_to "Admin Page", static_pages_adminpage_path, class: "nav-link" %>
+<table class="listing" summary="room list">
+<thead class="thead-dark">
+  <tr class = "header">
+    <th>Hotel</th>
+    <th>Singleroom</th>
+    <th>Doubleroom</th>
+    <th>Suite</th>
+    <th>Dormitory</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @rooms.each do |room| %>
+    <tr>
+      <td><%= room.name %></td>
+      <td><%= room.single_bedroom_num %></td>
+      <td><%= room.double_bedroom_num %></td>
+      <td><%= room.suite_room_num %></td>
+      <td><%= room.dormitory_room_num %></td>
+      <td class = "actions">
+        <%= link_to("Show", admin_room_path(room), class: "action show") %>
+        <%= link_to("Edit", edit_admin_room_path(room), class: "action edit") %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

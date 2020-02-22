@@ -1,0 +1,28 @@
+<%= link_to("<< Back to index list", {action: "index"}, class: "back_to_link") %>
+<div class = "rooms show">
+  <h2>Show room details</h2>
+  <table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Hotel</th>
+      <th scope="col">Singleroom</th>
+      <th scope="col">Doubleroom</th>
+      <th scope="col">Suite</th>
+      <th scope="col">Dormitory</th>
+      <th scope="col">Created</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td><%= @room.name %></td>
+      <td><%=  @room.single_bedroom_num %></td>
+      <td><%=  @room.double_bedroom_num %></td>
+      <td><%=  @room.suite_room_num %></td>
+      <td><%=  @room.dormitory_room_num %></td>
+      <td><%= @room.created_at %></td>
+    </tr>
+  </tbody>
+</table>
+</div>
