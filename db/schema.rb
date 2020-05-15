@@ -81,8 +81,8 @@ ActiveRecord::Schema.define(version: 2020_02_11_105105) do
     t.integer "double_bedroom_num"
     t.integer "suite_room_num"
     t.integer "dormitory_room_num"
-    t.float "latitude", null: false
-    t.float "longitude", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

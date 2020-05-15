@@ -12,8 +12,8 @@ class CreateHotels < ActiveRecord::Migration[5.2]
       t.integer :double_bedroom_num
       t.integer :suite_room_num
       t.integer :dormitory_room_num
-      t.float   :latitude,              null: false
-      t.float   :longitude,             null: false
+      t.float   :latitude
+      t.float   :longitude
       t.float   :price
       t.timestamps
     end

@@ -7,9 +7,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.email.downcase!
     if @user.save
-      redirect_to root_path, flash: { success: "Account created successfully!" }
-    else
-      render :new, flash: { error: "Validation error" }
+      session[:user_id] = @user.id
+      redirection_path
     end
   end
 

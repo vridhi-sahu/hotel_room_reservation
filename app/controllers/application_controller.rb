@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   private
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find(session[:user_id]) rescue session[:user_id] = nil
   end
 
   def authorize
@@ -28,10 +28,9 @@ class ApplicationController < ActionController::Base
   end
 
   def redirection_path
-    if is_admin?
-      return redirect_to current_user
-    else
-      return redirect_to root_path
+    if signed_in?
+      return redirect_to static_pages_adminpage_path, flash: { success: "Admin Signed In successfully!" } if is_admin?
+      return redirect_to root_path, flash: { success: "user Signed In successfully!" }
     end
   end
 
