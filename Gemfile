@@ -1,10 +1,13 @@
 source "https://rubygems.org"
 ruby "2.6.3"
 
+gem "rails", "~> 5.2.4"
 gem "activerecord-session_store", "~> 1.0"
-gem "bootsnap", ">= 1.1.0", require: false
-gem "bootstrap-datepicker-rails"
+gem 'jquery-rails',       '~> 4.3.5'
 gem "coffee-rails", "~> 4.2"
+gem "bootsnap", ">= 1.1.0", require: false
+gem 'bootstrap', '~> 4.3.1'
+gem "bootstrap-datepicker-rails"
 gem "delayed_job_active_record"
 gem "faker"
 gem "geocoder"
@@ -20,7 +23,6 @@ gem "omniauth-google-oauth2"
 gem "omniauth-oauth2"
 gem "paperclip", "~> 6.0.0"
 gem "puma", "~> 3.11"
-gem "rails", "~> 5.2.4"
 gem "sass-rails", "~> 5.0"
 gem "sqlite"
 gem "turbolinks", "~> 5"
@@ -29,6 +31,10 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "uglifier", ">= 1.3.0"
 gem "underscore-rails"
 gem "whenever", require: false
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+gem 'gon', '~> 6.2', '>= 6.2.1'
+
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

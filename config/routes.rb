@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root "static_pages#home"
   get "static_pages/home", to: "static_pages#home"
   get "static_pages/adminpage", to: "static_pages#adminpage"
@@ -10,20 +11,20 @@ Rails.application.routes.draw do
   get '/events/:calendar_id', to: 'example#events', as: 'events', calendar_id: /[^\/]+/
   post '/events/:calendar_id', to: 'example#new_event', as: 'new_event', calendar_id: /[^\/]+/
   get 'auth/failure', to: redirect('/')
-  
+
   resources :users, only: [:new, :create]
+
   namespace :admin do
-    resources :hotels 
-  end
-  namespace :admin do
+    resources :hotels
     resources :cities
-  end
-  namespace :admin do
     resources :rooms
   end
+
   resources :galleries, only: [:new, :create, :index]
   resources :sessions, only: [:new, :create, :destroy]
   resources :search_hotels, only: :show
-  resources :bookings
+  resources :bookings do
+    get :reservations, on: :collection
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -2,100 +2,100 @@
   <div class="row">
     <div class="col-md-6">
 
-    <div class="center hero-unit">
+      <div class="center hero-unit">
 
-      <div id="demo" class="carousel slide" data-ride="carousel">
+        <div id="demo" class="carousel slide" data-ride="carousel">
 
-        <!-- Indicators -->
-        <ul class="carousel-indicators">
-          <li data-target="#demo" data-slide-to="0" class="active"></li>
-          <li data-target="#demo" data-slide-to="1"></li>
-          <li data-target="#demo" data-slide-to="2"></li>
-        </ul>
+          <!-- Indicators -->
+          <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+          </ul>
 
-        <!-- The slideshow -->
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <%= image_tag("a.jpg", alt: "hotel 1") %>   
-            <div class="carousel-caption">
-              <h1> WELCOME TO HOTEL RESERVATION SYSTEM</h1>
-              <h3>Chicago</h3>
-              <p>Thank you, Chicago!</p>
+          <!-- The slideshow -->
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <%= image_tag("a.jpg", alt: "hotel 1") %>
+              <div class="carousel-caption">
+                <h1> WELCOME TO HOTEL RESERVATION SYSTEM</h1>
+                <h3>Chicago</h3>
+                <p>Thank you, Chicago!</p>
+              </div>
             </div>
-          </div>
 
-          <div class="carousel-item">
-            <%= image_tag("b.jpg", alt: "hotel 2") %>
-            <div class="carousel-caption"> 
-            <h1> WELCOME TO HOTEL RESERVATION SYSTEM</h1>
-            <h3>Los Angeles</h3>
-            <p>LA is always so much fun!</p>
+            <div class="carousel-item">
+              <%= image_tag("b.jpg", alt: "hotel 2") %>
+              <div class="carousel-caption">
+                <h1> WELCOME TO HOTEL RESERVATION SYSTEM</h1>
+                <h3>Los Angeles</h3>
+                <p>LA is always so much fun!</p>
+              </div>
             </div>
-          </div>
 
-          <div class="carousel-item">
-            <%= image_tag("c.jpg", alt: "hotel 3") %>  
+            <div class="carousel-item">
+              <%= image_tag("c.jpg", alt: "hotel 3") %>
               <div class="carousel-caption">
                 <h1> WELCOME TO HOTEL RESERVATION SYSTEM</h1>
                 <h3>New York</h3>
                 <p>We love the Big Apple!</p>
-              </div>        
+              </div>
+            </div>
           </div>
         </div>
-      </div>  
-    </div>
+      </div>
 
     </div>
     <div class="col-md-6">
-    <div class="container">
-    <div class="row">
-        <div class="col-md-12 min-vh-100 d-flex flex-column justify-content-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 min-vh-100 d-flex flex-column justify-content-center">
             <div class="row">
-            <div class="col-lg-8 col-md-6 mx-auto">
+              <div class="col-lg-8 col-md-6 mx-auto">
 
-                    <!-- form card login -->
-                    <div class="card rounded shadow shadow-sm">
-                        <div class="card-header">
-                        <h3 class="mb-0">Search Filters</h3>
-                        </div>
-                        <div class="card-body">
-                        <%= form_tag search_hotels_show_path, method: :get do %>
-                            <div class = "form-group">
-                              <%= label_tag :num_of_guests, "No of Guests" %>
-                              <%= number_field_tag :num_of_guests, nil %>
-                            </div>
-                            <div class = "form-group">
-                              <%= label_tag :num_of_rooms, "No of Rooms "%>
-                              <%= number_field_tag :num_of_rooms, nil%>
-                            </div>
-                            <div class = "form-group">
-                              <%= label_tag :check_in_date, "Check IN "%>
-                              <%= date_field_tag :check_in_date, nil%>
-                            </div>
-                            <div class = "form-group">
-                              <%= label_tag :check_out_date, "Check Out "%>
-                              <%= date_field :check_out_date, nil%>
-                            </div>
-                            <div class ="form-group">
-                              <%= label_tag :city, "city"%>
-                              <%= select_tag "city", options_from_collection_for_select(City.all, "id", "name")%>
-                            </div>
-                            <div class = "form-group">
-                              <%= submit_tag "SUBMIT", value: params[:num_of_guests], class: "btn btn-primary" %>
-                            </div>
-                        <% end %>
-                          </div>
-                        <!--/card-block-->
+                <!-- form card login -->
+                <div class="card rounded shadow shadow-sm">
+                  <div class="card-header">
+                    <h3 class="mb-0">Search Filters</h3>
+                  </div>
+                  <div class="card-body">
+                    <%= form_tag search_hotels_show_path, method: :get do %>
+                    <div class = "form-group">
+                      <%= label_tag :num_of_guests, "No of Guests" %>
+                      <%= number_field_tag :num_of_guests, nil %>
                     </div>
-                    <!-- /form card login -->
+                    <div class = "form-group">
+                      <%= label_tag :num_of_rooms, "No of Rooms "%>
+                      <%= number_field_tag :num_of_rooms, nil%>
+                    </div>
+                    <div class = "form-group">
+                      <%= label_tag :check_in_date, "Check IN "%>
+                      <%= date_field_tag :check_in_date, nil%>
+                    </div>
+                    <div class = "form-group">
+                      <%= label_tag :check_out_date, "Check Out "%>
+                      <%= date_field :check_out_date, nil%>
+                    </div>
+                    <div class ="form-group">
+                      <%= label_tag :city, "city"%>
+                      <%= select_tag "city", options_from_collection_for_select(City.all, "id", "name")%>
+                    </div>
+                    <div class = "form-group">
+                      <%= submit_tag "SUBMIT", value: params[:num_of_guests], class: "btn btn-primary" %>
+                    </div>
+                    <% end %>
+                  </div>
+                  <!--/card-block-->
                 </div>
+                <!-- /form card login -->
+              </div>
             </div>
             <!--/row-->
+          </div>
+          <!--/col-->
         </div>
-        <!--/col-->
+        <!--/row-->
+      </div>
     </div>
-    <!--/row-->
-</div>
-</div>
 
-<%= render(partial: "search_hotels/ListHotels") %>
+    <%= render(partial: "search_hotels/ListHotels") %>

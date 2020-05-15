@@ -1,34 +1,34 @@
 <div class="hotels index">
-<section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Hotels</h1>
-          <p class="lead text-muted">Best hotels curated for you.</p>
-          <p>
-            <%= link_to("Add New hotel", {action: "new"}, class: "action new btn btn-primary my-2") %>
-            <%= link_to("Back to Home Page", root_path, class: "btn btn-primary my-2") %>
-            <%= link_to "Admin Page", static_pages_adminpage_path, class: "btn btn-primary my-2" %>
-          </p>
-        </div>
-</section>
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Hotels</h1>
+      <p class="lead text-muted">Best hotels curated for you.</p>
+      <p>
+        <%= link_to("Add New hotel", {action: "new"}, class: "action new btn btn-primary my-2") %>
+        <%= link_to("Back to Home Page", root_path, class: "btn btn-primary my-2") %>
+        <%= link_to "Admin Page", static_pages_adminpage_path, class: "btn btn-primary my-2" %>
+      </p>
+    </div>
+  </section>
 
-<div class="container">
-  <% @hotels.each_slice(3)  do |hotels| %>
+  <div class="container">
+    <% @hotels.each_slice(3)  do |hotels| %>
     <div class="row">
-    <% hotels.each  do |hotel| %>
+      <% hotels.each  do |hotel| %>
       <div class="col-sm-6 col-lg-4">
-      <div class="card" style="width: 18rem;">
-      <%= image_tag(hotel.picture.url(:thumb), alt: "No hotel found") %>  <div class="card-body">
-        <h6><%= hotel.name %></h6>
-        <h6><%= hotel&.city&.name %></h6>
-        <p class="card-text">
-        <%= link_to("Show", admin_hotel_path(hotel), class: "action show") %>
-        <%= link_to("Edit", edit_admin_hotel_path(hotel), class: "action edit") %>
-        <%= link_to("Delete", admin_hotel_path(hotel), data: {confirm: "ARE YOU SURE?"}, method: :delete, class: "action delete") %>
-        </p>
+        <div class="card" style="width: 18rem;">
+          <%= image_tag(hotel.picture.url(:thumb), alt: "No hotel found") %>  <div class="card-body">
+            <h6><%= hotel.name %></h6>
+            <h6><%= hotel&.city&.name %></h6>
+            <p class="card-text">
+              <%= link_to("Show", admin_hotel_path(hotel), class: "action show") %>
+              <%= link_to("Edit", edit_admin_hotel_path(hotel), class: "action edit") %>
+              <%= link_to("Delete", admin_hotel_path(hotel), data: {confirm: "ARE YOU SURE?"}, method: :delete, class: "action delete") %>
+            </p>
+          </div>
+        </div>
       </div>
+      <% end %>
     </div>
-      </div>
     <% end %>
-    </div>
-  <% end %>
-</div>
+  </div>

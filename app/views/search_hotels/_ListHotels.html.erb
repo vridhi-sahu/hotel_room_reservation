@@ -1,24 +1,24 @@
 <div class="container">
-<% @hotels.each_slice(3) do |hotels| %>
-<div class="row">
-<% hotels.each do |hotel| %>
-<div class="col-sm-6 col-lg-4">
-<div class="card" style="width: 18rem;">
-  <%= image_tag(hotel.picture.url(:thumb), alt: "No hotel found") %> <div class="card-body">
-<div class ="row">
-<div class="col-md-8">
-<h6>  <%= hotel.name %></h6>
-<h6>  <%= hotel&.city&.name %></h6>
-<%= link_to("Check", admin_hotel_path(hotel), class: "action show") %>
-</div>
-<div class="col-md-4">
-  <%= link_to "Book", new_booking_path(hotel_id: hotel.id, hotel_name: hotel.name), class: "btn btn-primary my-2" %>
-</div>
-</div>
-</div>
-</div>
-</div>
-<% end %>
-</div>
-<% end %>
+  <% @hotels.each_slice(3) do |hotels| %>
+  <div class="row">
+    <% hotels.each do |hotel| %>
+    <div class="col-sm-6 col-lg-4">
+      <div class="card" style="width: 18rem;">
+        <%= image_tag(hotel.picture.url(:thumb), alt: "No hotel found") %> <div class="card-body">
+          <div class ="row">
+            <div class="col-md-8">
+              <h6>  <%= hotel.name %></h6>
+              <h6>  <%= hotel&.city&.name %></h6>
+              <%= link_to("Check", admin_hotel_path(hotel), class: "action show") %>
+            </div>
+            <div class="col-md-4">
+              <%= link_to "Book", new_booking_path(hotel_id: hotel.id, hotel_name: hotel.name), class: "btn btn-primary my-2" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
 </div>

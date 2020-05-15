@@ -10,11 +10,18 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
 //= require activestorage
-//= require turbolinks
-//= require_tree .
-//= require bootstrap-datepicker
+//= require jquery
+//= require rails-ujs
 //= require underscore
+//= require bootstrap-sprockets
+//= require bootstrap-datepicker
 //= require gmaps/google
+//= require turbolinks
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/locale-all
+//= require shared
+//= require hotels
+//= require_tree .
 

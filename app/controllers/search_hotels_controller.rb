@@ -1,21 +1,12 @@
 class SearchHotelsController < ApplicationController
-  before_action :set_auth
-  def show
-    guests = params[:num_of_guests]
-    guestsd= (params[:num_of_guests].to_i/2)
-    guestsu= (params[:num_of_guests].to_i/3)
-    guestsdor= (params[:num_of_guests].to_i/4)
 
-    if params[:city] && params[:num_of_guests]
-      @hotels = Hotel.where("single_bedroom_num >= ? OR double_bedroom_num >= ? OR suite_room_num >= ? OR dormitory_room_num >= ?", guests, guestsd, guestsu, guestsdor).where(city_id: params[:city])
-    elsif params[:num_of_guests]
-      @hotels = Hotel.where("single_bedroom_num >= ? OR double_bedroom_num >= ? OR suite_room_num >= ? OR dormitory_room_num >= ?", guests, guestsd, guestsu, guestsdor)
-    elsif params[:city] 
-      @hotels = Hotel.joins(:city).where(city_id: params[:city])
-    else
-      @hotels = Hotel.all
-    end
-    # this is a controller with no model and the params are fetched over here so the queries are written here.
+  before_action :set_auth
+
+  def show
+    guests    = params[:num_of_guests].to_i
+    city      = params[:city]
+    @hotels   = Hotel.all
+    @hotels   = @hotels.select{ |hotel| hotel if (hotel.single_bedroom_num >= guests || hotel.double_bedroom_num >= guests || hotel.suite_room_num >= guests || hotel.dormitory_room_num >= guests) and hotel.city_id ==  city.to_i }
   end
 
 private

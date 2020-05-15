@@ -10,28 +10,10 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require fullcalendar
+ *= require bootstrap-datepicker
+ *= require shared
  *= require_tree .
  *= require_self
- *= require bootstrap-datepicker
  */
- 
- body
- {
-  background: #c7daee;
- }
- .hero-unit {
-    text-align: center;
-    background: #9ec7f0;
- }
- .carousel-item{
-   height: 550px;
- }
- .carousel-caption{
-   color: #ffc106;
-   transform: translateY(-40%);
- 
- }
- .carousel-caption > h1{
-   color: white;
-   top: 60%;
-   transform: translateY(-25%); }
+ @import "bootstrap";

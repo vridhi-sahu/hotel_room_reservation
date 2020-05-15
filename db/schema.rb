@@ -57,27 +57,22 @@ ActiveRecord::Schema.define(version: 2020_02_11_105105) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "examples", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "galleries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "picture_file_name"
     t.string "picture_content_type"
     t.integer "picture_file_size"
     t.datetime "picture_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "hotels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "address"
-    t.string "picture_file_name", null: false
-    t.string "picture_content_type", null: false
-    t.integer "picture_file_size", null: false
-    t.datetime "picture_updated_at", null: false
+    t.string "picture_file_name"
+    t.string "picture_content_type"
+    t.integer "picture_file_size"
+    t.datetime "picture_updated_at"
     t.integer "single_bedroom_price", null: false
     t.integer "double_bedroom_price", null: false
     t.integer "suite_room_price", null: false
@@ -88,30 +83,11 @@ ActiveRecord::Schema.define(version: 2020_02_11_105105) do
     t.integer "dormitory_room_num"
     t.float "latitude", null: false
     t.float "longitude", null: false
+    t.float "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "city_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["city_id"], name: "index_hotels_on_city_id"
-  end
-
-  create_table "roominfos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "static_pages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "user_hotels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

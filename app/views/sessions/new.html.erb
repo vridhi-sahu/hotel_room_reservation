@@ -1,49 +1,49 @@
 <% @page_title = "Login Page for users" %>
 <div class="container">
-    <div class="row">
-        <div class="col-md-12 min-vh-60 d-flex flex-column justify-content-center">
-            <div class="row">
-                <div class="col-lg-6 col-md-8 mx-auto">
+  <div class="row">
+    <div class="col-md-12 min-vh-60 d-flex flex-column justify-content-center">
+      <div class="row">
+        <div class="col-lg-6 col-md-8 mx-auto">
 
-                    <!-- form card login -->
-                    <div class="card rounded shadow shadow-sm">
-                        <div class="card-header">
-                            <h3 class="mb-0">Login</h3>
-                        </div>
-                        <div class="card-body">
-                        <%= form_for @user, url: sessions_path do |f| %>
-                          <%= render(partial: "error_refer/error", locals: { target: @user }) %>
-
-                          <ul class = "list-group">
-                            <% @errors.try(:each) do |message| %>
-                              <li class = "list-group-item"><%= message %></li>
-                            <% end %>
-                          </ul>
-                        
-                          <div class = "form-group">
-                            <%= f.label :email, "Email "%>
-                            <%= f.email_field :email, placeholder: "Enter your email", class: "form-control" %>
-                          </div>
-                          
-                          <div class = "form-group">
-                            <%= f.label :password, "Password "%>
-                            <%= f.password_field :password, placeholder: "Enter your password", class: "form-control" %>
-                          </div>
-                        
-                          <div class = "form-group">
-                            <%= f.submit "Login", class: "btn btn-primary" %>
-                          </div>
-                        <% end %>
-                        </div>
-                        <!--/card-block-->
-                    </div>
-                    <!-- /form card login -->
-                </div>
+          <!-- form card login -->
+          <div class="card rounded shadow shadow-sm">
+            <div class="card-header">
+              <h3 class="mb-0">Login</h3>
             </div>
-            <!--/row-->
+            <div class="card-body">
+              <%= form_for @user, url: sessions_path do |f| %>
+              <%= render(partial: "error_refer/error", locals: { target: @user }) %>
+
+              <ul class = "list-group">
+                <% @errors.try(:each) do |message| %>
+                <li class = "list-group-item"><%= message %></li>
+                <% end %>
+              </ul>
+
+              <div class = "form-group">
+                <%= f.label :email, "Email "%>
+                <%= f.email_field :email, placeholder: "Enter your email", class: "form-control" %>
+              </div>
+
+              <div class = "form-group">
+                <%= f.label :password, "Password "%>
+                <%= f.password_field :password, placeholder: "Enter your password", class: "form-control" %>
+              </div>
+
+              <div class = "form-group">
+                <%= f.submit "Login", class: "btn btn-primary" %>
+              </div>
+              <% end %>
+            </div>
+            <!--/card-block-->
+          </div>
+          <!-- /form card login -->
         </div>
-        <!--/col-->
+      </div>
+      <!--/row-->
     </div>
-    <!--/row-->
+    <!--/col-->
+  </div>
+  <!--/row-->
 </div>
 <!--/container-->
