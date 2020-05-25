@@ -18,5 +18,4 @@ $(document).ready(function() {
       selectLongPressDelay:0.0001
     });
   }
-
 });

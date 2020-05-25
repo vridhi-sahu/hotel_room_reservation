@@ -1,21 +1,21 @@
 
- body
- {
+body {
   background: #c7daee;
- }
- .hero-unit {
-    text-align: center;
-    background: #9ec7f0;
- }
- .carousel-item{
-   height: 550px;
- }
- .carousel-caption{
-   color: #ffc106;
-   transform: translateY(-40%);
+}
+.hero-unit {
+  text-align: center;
+  background: #9ec7f0;
+}
+.carousel-item {
+  height: 550px;
+}
+.carousel-caption {
+  color: #ffc106;
+  transform: translateY(-40%);
 
- }
- .carousel-caption > h1{
-   color: white;
-   top: 60%;
-   transform: translateY(-25%); }
+}
+.carousel-caption > h1 {
+  color: white;
+  top: 60%;
+  transform: translateY(-25%);
+  }
