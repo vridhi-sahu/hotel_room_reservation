@@ -21,7 +21,7 @@ class Admin::CitiesController < Admin::BaseController
 
   def update
     if @city.update_attributes(city_params)
-      redirect_to city_path(@city)
+      redirect_to admin_city_path(@city)
     else
       render :edit, flash: { error: "Validation error" }
     end

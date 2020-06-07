@@ -1,20 +1,24 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm">
+    <div class="col-sm-4">
       <%= image_tag("room.jpeg", alt: "room") %><br>
-      <%= link_to "Edit rooms", admin_rooms_path, class: "nav-link" %>
+      <%= link_to "View Rooms", admin_rooms_path, class: "nav-link" %>
     </div>
-    <div class="col-sm">
+    <div class="col-sm-4">
       <%= image_tag("hotel.jpeg", alt: "hotel") %><br>
-      <%= link_to "Edit hotels", admin_hotels_path, class: "nav-link" %>
+      <%= link_to "View Hotels", admin_hotels_path, class: "nav-link" %>
     </div>
-    <div class="col-sm">
+    <div class="col-sm-4">
       <%= image_tag("city.jpeg", alt: "city") %><br>
-      <%= link_to "Edit cities", admin_cities_path, class: "nav-link" %>
+      <%= link_to "View Cities", admin_cities_path, class: "nav-link" %>
     </div>
-    <div class="col-sm">
-      <%= image_tag("city.jpeg", alt: "city") %><br>
-      <%= link_to "Edit galleries", new_gallery_path, class: "nav-link" %>
+    <div class="col-sm-4">
+      <%= image_tag("city.jpeg", alt: "Gallery") %><br>
+      <%= link_to "View Galleries", new_gallery_path, class: "nav-link" %>
+    </div>
+    <div class="col-sm-4">
+      <%= image_tag("room.jpeg", alt: "Booking") %><br>
+      <%= link_to "View Booking Calendar", bookings_path, class: "nav-link" %>
     </div>
   </div>
 </div>

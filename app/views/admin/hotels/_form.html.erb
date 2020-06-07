@@ -14,62 +14,62 @@
 
               <div class = "form-group">
                 <%= f.label :name, "Name of Hotel "%>
-                <%= f.text_field :name, placeholder: "Enter your name", class: "form-control" %>
+                <%= f.text_field :name, placeholder: "Enter your name", class: "form-control", step: 0.1, min: 0, required: true %>
               </div>
 
               <div class ="form-group">
                 <%= f.label :city, "Select City"%>
-                <%= f.select :city_id, @cities.map { |type| [type.name.titleize, type.id] },{ include_hidden: false }, class: 'form-control' %>
+                <%= f.select :city_id, @cities.map { |type| [type.name.titleize, type.id] },{ include_hidden: false }, class: 'form-control', required: true %>
               </div>
 
               <div class ="form-group">
                 <%= f.label :address, "Address of Hotel"%>
-                <%= f.text_field :address, placeholder: "address", class: "form-control" %>
+                <%= f.text_field :address, placeholder: "address", class: "form-control", step: 0.1, min: 0, required: true %>
               </div>
 
               <div class = "form-group">
                 <%= f.label :single_bedroom_price, "Single bedroom price:"%>
-                <%= f.text_field :single_bedroom_price, placeholder: "Enter price per room", class: "form-control" %>
+                <%= f.number_field :single_bedroom_price, placeholder: "Enter price per room", class: "form-control", step: 0.1, min: 0.0 %>
               </div>
 
               <div class = "form-group">
                 <%= f.label :double_bedroom_price, "Double bedroom price:"%>
-                <%= f.text_field :double_bedroom_price, placeholder: "Enter price per room", class: "form-control" %>
+                <%= f.number_field :double_bedroom_price, placeholder: "Enter price per room", class: "form-control", step: 0.1, min: 0.0 %>
               </div>
 
               <div class = "form-group">
                 <%= f.label :suite_room_price, "Suite room price :"%>
-                <%= f.text_field :suite_room_price, placeholder: "Enter price per room", class: "form-control" %>
+                <%= f.number_field :suite_room_price, placeholder: "Enter price per room", class: "form-control", step: 0.1, min: 0.0 %>
               </div>
 
               <div class = "form-group">
                 <%= f.label :dormitory_room_price, "Dormitory room price :"%>
-                <%= f.text_field :dormitory_room_price, placeholder: "Enter price per room", class: "form-control" %>
-              </div>
+                <%= f.number_field :dormitory_room_price, placeholder: "Enter price per room", class: "form-control", step: 0.1, min: 0.0 %>
+              </div>-
 
               <div class = "form-group">
                 <%= f.label :single_bedroom_num, "No. of singlebed rooms:"%>
-                <%= f.text_field :single_bedroom_num, placeholder: "Enter availability", class: "form-control" %>
+                <%= f.number_field :single_bedroom_num, placeholder: "Enter availability", class: "form-control", step: 1, min: 0 %>
               </div>
 
               <div class = "form-group">
                 <%= f.label :double_bedroom_num, "No. of double bedroom_num rooms:"%>
-                <%= f.text_field :double_bedroom_num, placeholder: "Enter availability", class: "form-control" %>
+                <%= f.number_field :double_bedroom_num, placeholder: "Enter availability", class: "form-control", step: 1, min: 0 %>
               </div>
 
               <div class = "form-group">
                 <%= f.label :suite_room_num, "No. of suite room num rooms:"%>
-                <%= f.text_field :suite_room_num, placeholder: "Enter availability", class: "form-control" %>
+                <%= f.number_field :suite_room_num, placeholder: "Enter availability", class: "form-control", step: 1, min: 0 %>
               </div>
 
               <div class = "form-group">
                 <%= f.label :dormitory_room_num, "No. of dormitory room num rooms:"%>
-                <%= f.text_field :dormitory_room_num, placeholder: "Enter availability", class: "form-control" %>
+                <%= f.number_field :dormitory_room_num, placeholder: "Enter availability", class: "form-control", step: 1, min: 0 %>
               </div>
 
               <div class="form-group">
                 <%= f.label :picture, "Upload Image of the hotel" %><br/>
-                <%= f.file_field :picture  %>
+                <%= f.file_field :picture, required: true  %>
               </div>
 
               <div class = "form-group">

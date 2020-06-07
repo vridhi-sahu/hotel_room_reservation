@@ -11,31 +11,31 @@
             <div class="card-body">
 
               <%= form_for [:admin, @room] do |f| %>
-              <%= render(partial: "error_refer/error", locals: { target: @room }) %>
+                <%= render(partial: "error_refer/error", locals: { target: @room }) %>
 
-              <div class = "form-group">
-                <%= f.label :single_bedroom_num, "No. of singlebed rooms:"%>
-                <%= f.text_field :single_bedroom_num, placeholder: "Enter availability", class: "form-control" %>
-              </div>
+                <div class = "form-group">
+                  <%= f.label :single_bedroom_price, "Single bedroom price:"%>
+                  <%= f.number_field :single_bedroom_price, placeholder: "Enter price per room", class: "form-control", step: 0.1, min: 0.0 %>
+                </div>
 
-              <div class = "form-group">
-                <%= f.label :double_bedroom_num, "No. of double_bedroom_num rooms:"%>
-                <%= f.text_field :double_bedroom_num, placeholder: "Enter availability", class: "form-control" %>
-              </div>
+                <div class = "form-group">
+                  <%= f.label :double_bedroom_price, "Double bedroom price:"%>
+                  <%= f.number_field :double_bedroom_price, placeholder: "Enter price per room", class: "form-control", step: 0.1, min: 0.0 %>
+                </div>
 
-              <div class = "form-group">
-                <%= f.label :suite_room_num, "No. of suite_room_num rooms:"%>
-                <%= f.text_field :suite_room_num, placeholder: "Enter availability", class: "form-control" %>
-              </div>
+                <div class = "form-group">
+                  <%= f.label :suite_room_price, "Suite room price :"%>
+                  <%= f.number_field :suite_room_price, placeholder: "Enter price per room", class: "form-control", step: 0.1, min: 0.0 %>
+                </div>
 
-              <div class = "form-group">
-                <%= f.label :dormitory_room_num, "No. of dormitory_room_num rooms:"%>
-                <%= f.text_field :dormitory_room_num, placeholder: "Enter availability", class: "form-control" %>
-              </div>
+                <div class = "form-group">
+                  <%= f.label :dormitory_room_price, "Dormitory room price :"%>
+                  <%= f.number_field :dormitory_room_price, placeholder: "Enter price per room", class: "form-control", step: 0.1, min: 0.0 %>
+                </div>
 
-              <div class = "form-group">
-                <%= f.submit "Submit", class: "btn btn-primary" %>
-              </div>
+                <div class = "form-group">
+                  <%= f.submit "Submit", class: "btn btn-primary" %>
+                </div>
               <% end %>
             </div>
             <!--/card-block-->

@@ -22,28 +22,28 @@
 
               <div class = "form-group">
                 <%= f.label :name, "Name "%>
-                <%=  f.text_field :name, placeholder: "Enter your name", class: "form-control" %>
+                <%=  f.text_field :name, placeholder: "Enter your name", class: "form-control", required: true  %>
               </div>
 
               <div class = "form-group">
                 <%= f.label :email, "Email "%>
-                <%= f.email_field :email, placeholder: "Enter your email", class: "form-control" %>
+                <%= f.email_field :email, placeholder: "Enter your email", class: "form-control", required: true  %>
               </div>
 
               <div class = "form-group">
                 <%= f.label :phone, "Phone "%>
-                <%=  f.telephone_field :phone, placeholder: "Enter your phone", class: "form-control" %>
+                <%=  f.telephone_field :phone, placeholder: "Enter your phone", class: "form-control", required: true  %>
               </div>
 
 
               <div class = "form-group">
                 <%= f.label :password, "Password "%>
-                <%= f.password_field :password, placeholder: "Enter your password", class: "form-control" %>
+                <%= f.password_field :password, placeholder: "Enter your password", class: "form-control", required: true  %>
               </div>
 
               <div class = "form-group">
                 <%= f.label :password, "Password "%>
-                <%= f.password_field :password_confirmation, placeholder: "Confirm your password", class: "form-control" %>
+                <%= f.password_field :password_confirmation, placeholder: "Confirm your password", class: "form-control", required: true  %>
               </div>
 
               <div class = "form-group">

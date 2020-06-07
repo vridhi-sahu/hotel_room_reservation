@@ -2,5 +2,5 @@
 <p>
   <%= @greeting %> <%= @admin.pluck(:name).to_s %>, A booking request has been made. <%= @user.name %>has requested to book rooms for
   <%= @booking.num_of_guests %> number of guests for the hotel
-  <%= @booking.hotel_name %> for the dates from <%= @booking.check_in_date %> to <%= @booking.check_out_date %>
+  <%= @booking.hotel.name %> for the dates from <%= @booking.check_in_date %> to <%= @booking.check_out_date %>
 </p>

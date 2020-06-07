@@ -10,19 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_11_105105) do
+ActiveRecord::Schema.define(version: 2020_01_24_100243) do
 
   create_table "bookings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "num_of_guests", null: false
     t.string "guest_name", null: false
     t.date "check_in_date", null: false
     t.date "check_out_date", null: false
-    t.integer "single_bedroom_num"
-    t.integer "double_bedroom_num"
-    t.integer "suite_room_num"
-    t.integer "dormitory_room_num"
-    t.integer "total"
-    t.string "hotel_name", null: false
+    t.integer "single_bedroom_num", default: 0
+    t.integer "double_bedroom_num", default: 0
+    t.integer "suite_room_num", default: 0
+    t.integer "dormitory_room_num", default: 0
+    t.integer "total", default: 0
     t.bigint "hotel_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -32,7 +31,7 @@ ActiveRecord::Schema.define(version: 2020_02_11_105105) do
   end
 
   create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -52,11 +51,6 @@ ActiveRecord::Schema.define(version: 2020_02_11_105105) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
-  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "galleries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "picture_file_name"
     t.string "picture_content_type"
@@ -73,17 +67,17 @@ ActiveRecord::Schema.define(version: 2020_02_11_105105) do
     t.string "picture_content_type"
     t.integer "picture_file_size"
     t.datetime "picture_updated_at"
-    t.integer "single_bedroom_price", null: false
-    t.integer "double_bedroom_price", null: false
-    t.integer "suite_room_price", null: false
-    t.integer "dormitory_room_price", null: false
-    t.integer "single_bedroom_num"
-    t.integer "double_bedroom_num"
-    t.integer "suite_room_num"
-    t.integer "dormitory_room_num"
-    t.float "latitude"
-    t.float "longitude"
-    t.float "price"
+    t.float "single_bedroom_price", default: 0.0, null: false
+    t.float "double_bedroom_price", default: 0.0, null: false
+    t.float "suite_room_price", default: 0.0, null: false
+    t.float "dormitory_room_price", default: 0.0, null: false
+    t.integer "single_bedroom_num", default: 0, null: false
+    t.integer "double_bedroom_num", default: 0, null: false
+    t.integer "suite_room_num", default: 0, null: false
+    t.integer "dormitory_room_num", default: 0, null: false
+    t.float "latitude", default: 0.0, null: false
+    t.float "longitude", default: 0.0, null: false
+    t.float "price", default: 0.0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "city_id"
@@ -92,9 +86,9 @@ ActiveRecord::Schema.define(version: 2020_02_11_105105) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "email"
+    t.string "email", null: false
     t.string "phone"
-    t.string "password_digest"
+    t.string "password_digest", null: false
     t.boolean "admin", default: false
     t.string "provider", default: "email"
     t.string "uid"

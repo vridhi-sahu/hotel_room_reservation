@@ -2,14 +2,13 @@ class Booking < ApplicationRecord
   belongs_to :hotel
   belongs_to :user
 
-  validate :check_out_greater_than_check_in
   validates :num_of_guests, :guest_name, :check_in_date, :check_out_date,  presence: true
+  validate :check_out_greater_than_check_in
   validates_associated :hotel, :user
 
   def check_out_greater_than_check_in
 
     if check_in_date.present? && check_in_date > check_out_date
-
       errors.add(:check_out_date, "Cant be lesser than check in!")
     end
   end

@@ -6,18 +6,19 @@ class GalleriesController < ApplicationController
     @image = Gallery.new
   end
   def create
+    return redirect_to new_gallery_path, alert: "Please select any image" if params[:gallery].blank?
+
     @image = Gallery.new(img_params)
-    
-    if @image.save 
-      redirect_to(galleries_path, flash: { notice: "Image has been uploaded successfully" })
+    if @image.save
+      redirect_to galleries_path, notice: "Image has been uploaded successfully"
     else
-      render "new"
+      render :new
     end
   end
-  
-  private 
-  
+
+  private
+
   def img_params
-    params.fetch(:gallery).permit(:picture)
+    params.require(:gallery).permit(:picture)
   end
 end

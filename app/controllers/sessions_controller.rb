@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :check_params, only: [:create]
   before_action :signed_in?, only: [:new, :create]
 
   def new
@@ -23,4 +24,12 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path, flash: { success: "Successfully Logged Out" }
   end
+
+  def check_params
+    errors = []
+    errors <<  "Please enter Email!" if params[:user][:email].blank?
+    errors <<  "Please enter Password!" if params[:user][:password].blank?
+    return redirect_to new_session_path, alert: errors.to_sentence if errors.present?
+  end
+
 end

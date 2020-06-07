@@ -23,8 +23,6 @@ Rails.application.routes.draw do
   resources :galleries, only: [:new, :create, :index]
   resources :sessions, only: [:new, :create, :destroy]
   resources :search_hotels, only: :show
-  resources :bookings do
-    get :reservations, on: :collection
-  end
+  resources :bookings
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
