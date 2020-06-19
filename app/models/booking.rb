@@ -2,6 +2,8 @@ class Booking < ApplicationRecord
   belongs_to :hotel
   belongs_to :user
 
+  enum status: %w(pending approved rejected)
+
   validates :num_of_guests, :guest_name, :check_in_date, :check_out_date,  presence: true
   validate :check_out_greater_than_check_in
   validates_associated :hotel, :user

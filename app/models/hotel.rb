@@ -15,4 +15,14 @@ class Hotel < ApplicationRecord
 	validates_attachment_content_type :picture, content_type: %r{\Aimage\/.*\z}
 	validates_attachment_presence :picture
 
+	# IMAGE_TYPES = %w[image/gif image/jpeg image/pjpeg image/x-png image/png].freeze
+
+	# has_one_attached :image
+
+	# validates :image, content_type: { in: IMAGE_TYPES, message: 'invalid format' }, requisites: false
+
+	# def image_path
+	#   image.attached? ? image : 'account-add-photo.svg'
+	# end
+
 end

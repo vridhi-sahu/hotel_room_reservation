@@ -4,7 +4,7 @@
       <h1 class="jumbotron-heading">Hotels</h1>
       <p class="lead text-muted">Best hotels curated for you.</p>
       <p>
-        <%= link_to("Back to Home Page", root_path, class: "btn btn-primary my-2") %>
+        <%= link_to("Back to Home Page", root_path(search: params.to_s), class: "btn btn-primary my-2") %>
       </p>
     </div>
   </section>

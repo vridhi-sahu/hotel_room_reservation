@@ -19,55 +19,64 @@
       <li class = "list-group-item">  <%= message %></li>
     <% end %>
   </ul>
-  
+
   <div class = "form-group">
       <%= f.label :guest_name, "Name of Guest"%>
       <%= f.text_field :guest_name, placeholder: "Enter your name", class: "form-control" %>
   </div>
-  
+
   <div class = "form-group">
       <%= f.label :check_in_date, "Check IN "%>
       <%= f.date_field :check_in_date, min: Date.today, placeholder: "Enter check in date", class: "form-control" %>
   </div>
-  
+
   <div class = "form-group">
     <%= f.label :check_out_date, "Check Out "%>
     <%= f.date_field :check_out_date, min: Date.today, placeholder: "Enter check out date", class: "form-control" %>
   </div>
-  
+
   <div class = "form-group">
     <%= f.label :no_of_guests, "No. of Guests" %>
     <%= f.number_field :num_of_guests, min: 0, max: 10 %>
   </div>
-  
-  <div class = "form-group">
-    <%= f.label :single_bedroom_num, "No. of Single bedrooms" %>
-    <%= f.number_field :single_bedroom_num, min: 0, max: @single %>
-  </div>
-  
-  <div class = "form-group">
-    <%= f.label :double_bedroom_num, "No. of Double bedrooms "%>
-    <%= f.number_field :double_bedroom_num, min: 0, max: @double %>
-  </div>
+  <% unless @single.zero? %>
+    <div class = "form-group">
+      <%= f.label :single_bedroom_num, "No. of Single bedrooms" %>
+      <%= f.number_field :single_bedroom_num, min: 0, max: @single %>
+    </div>
+  <% end %>
 
-  <div class = "form-group">
-    <%= f.label :suite_room_num, "No. of suite rooms "%>
-    <%= f.number_field :suite_room_num, min: 0, max: @suite %>
-  </div>
+  <% unless @double.zero? %>
+    <div class = "form-group">
+      <%= f.label :double_bedroom_num, "No. of Double bedrooms "%>
+      <%= f.number_field :double_bedroom_num, min: 0, max: @double %>
+    </div>
+  <% end %>
 
-  <div class = "form-group">
-    <%= f.label :dormitory_room_num, "No. of dormitory rooms "%>
-    <%= f.number_field :dormitory_room_num, min: 0, max: @dormitory%>
-  </div>
+  <% unless @suite.zero? %>
+    <div class = "form-group">
+      <%= f.label :suite_room_num, "No. of suite rooms "%>
+      <%= f.number_field :suite_room_num, min: 0, max: @suite %>
+    </div>
+  <% end %>
 
-  <div class = "form-group">
-    <%= f.hidden_field :hotel_id, value: params[:hotel_id] %>
-  </div>
+
+  <% unless @dormitory.zero? %>
+    <div class = "form-group">
+      <%= f.label :dormitory_room_num, "No. of dormitory rooms "%>
+      <%= f.number_field :dormitory_room_num, min: 0, max: @dormitory%>
+    </div>
+  <% end %>
+
+
+    <div class = "form-group">
+      <%= f.hidden_field :hotel_id, value: params[:hotel_id] %>
+    </div>
 
   <div class = "form-group">
     <%= f.hidden_field :hotel_name, value: params[:hotel_name] %>
   </div>
-  
+
 
   <div class = "form-group">
     <%= f.submit "SUBMIT", class: "btn btn-primary" %>

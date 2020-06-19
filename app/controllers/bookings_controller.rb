@@ -1,10 +1,13 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
+  before_action :authenticate_admin!, only: [:client_bookings, :update_status]
 
   def index
     bookings = []
-    Booking.all.each do |booking|
-      bookings << {id: booking.id, title: booking.guest_name, start: booking.check_in_date, end: booking.check_out_date} if booking.check_in_date.present?
+    @user = User.find session[:user_id]
+    reservations = @user.admin? ? Booking.all.approved : Booking.where(user_id: @user.id).approved
+    reservations.each do |booking|
+      bookings << {id: booking.id, title: booking.guest_name, start: booking.check_in_date, end: booking.check_out_date + 1.day} if booking.check_in_date.present?
     end
     gon.bookings = bookings
   end
@@ -32,6 +35,30 @@ class BookingsController < ApplicationController
     else
       flash.now[:error] = "Couldn't make the booking."
     end
+  end
+
+  def client_bookings
+    @bookings = Booking.all
+  end
+
+  def update_status
+    booking = Booking.find(params[:id])
+    booking.update(status: params[:status])
+    redirect_to(action: :client_bookings)
+    # redirect_to client_bookings_bookings_path, notice: 'Booking has been Updated'
+  end
+
+
+  def destroy
+    booking = Booking.find(params[:id])
+    hotel = booking.hotel
+    hotel.single_bedroom_num += booking.single_bedroom_num
+    hotel.double_bedroom_num += booking.double_bedroom_num
+    hotel.suite_room_num += booking.suite_room_num
+    hotel.dormitory_room_num += booking.dormitory_room_num
+    hotel.save
+    booking.destroy
+    redirect_to(action: :client_bookings)
   end
 
   private

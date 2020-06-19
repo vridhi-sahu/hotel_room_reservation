@@ -62,23 +62,23 @@
                     <%= form_tag search_hotels_show_path, method: :get do %>
                     <div class = "form-group">
                       <%= label_tag :num_of_guests, "No of Guests" %>
-                      <%= number_field_tag :num_of_guests, nil %>
+                      <%= number_field_tag :num_of_guests, @search['num_of_guests']  %>
                     </div>
                     <div class = "form-group">
                       <%= label_tag :num_of_rooms, "No of Rooms "%>
-                      <%= number_field_tag :num_of_rooms, nil%>
+                      <%= number_field_tag :num_of_rooms, @search['num_of_rooms'] %>
                     </div>
                     <div class = "form-group">
                       <%= label_tag :check_in_date, "Check IN "%>
-                      <%= date_field_tag :check_in_date, nil%>
+                      <%= date_field_tag :check_in_date, @search['check_in_date'] %>
                     </div>
                     <div class = "form-group">
                       <%= label_tag :check_out_date, "Check Out "%>
-                      <%= date_field :check_out_date, nil%>
+                      <%= date_field_tag :check_out_date, @search['check_out_date'] %>
                     </div>
                     <div class ="form-group">
                       <%= label_tag :city, "city"%>
-                      <%= select_tag "city", options_from_collection_for_select(City.all, "id", "name")%>
+                      <%= select_tag "city", options_from_collection_for_select(City.all, "id", "name", @search['check_out_date'].present? ? @search['check_out_date'] : 1 )%>
                     </div>
                     <div class = "form-group">
                       <%= submit_tag "SUBMIT", value: params[:num_of_guests], class: "btn btn-primary" %>

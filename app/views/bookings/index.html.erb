@@ -1,3 +1,15 @@
+<%if @user.admin?%>
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Bookings</h1>
+      <p>
+        <%= link_to("Back ", static_pages_adminpage_path, class: "btn btn-primary my-2") %>
+        <%= link_to "Approve and Reject bookings", client_bookings_bookings_path, class: "btn btn-primary my-2" %>
+      </p>
+    </div>
+  </section>
+<% end %>
+
 <header class="header" id="myHeader">
   <h1>Reservation Calendar</h1>
 </header>

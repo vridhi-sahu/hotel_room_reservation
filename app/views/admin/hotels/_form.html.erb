@@ -68,8 +68,17 @@
               </div>
 
               <div class="form-group">
-                <%= f.label :picture, "Upload Image of the hotel" %><br/>
-                <%= f.file_field :picture, required: true  %>
+                <label>Hotel Preview</label>
+                <div class="dz-clickable media align-items-center" data-toggle="dropzone" data-dropzone-url="http://" data-dropzone-clickable=".dz-clickable" data-dropzone-files="[&quot;assets/images/account-add-photo.svg&quot;]">
+                  <div class="dz-preview dz-file-preview dz-clickable mr-3">
+                    <div class="avatar avatar-lg dz-error dz-complete">
+                      <%= image_tag f.object.picture&.exists? ?  f.object&.picture.url : 'account-add-photo.svg',  class: 'avatar-img rounded', data: { 'dz-thumbnail' => '' } %>
+                    </div>
+                  </div>
+                  <div class="media-body">
+                    <%= f.file_field :picture, class: 'btn btn-sm dz-clickable' %>
+                  </div>
+                </div>
               </div>
 
               <div class = "form-group">
