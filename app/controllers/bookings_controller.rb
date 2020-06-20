@@ -1,13 +1,12 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admin!, only: [:client_bookings, :update_status]
-
+  before_action :get_booking, only: [:update_status, :destroy]
   def index
     bookings = []
-    @user = User.find session[:user_id]
-    reservations = @user.admin? ? Booking.all.approved : Booking.where(user_id: @user.id).approved
+    reservations = current_user.admin? ? Booking.all : Booking.where(user_id: current_user.id)
     reservations.each do |booking|
-      bookings << {id: booking.id, title: booking.guest_name, start: booking.check_in_date, end: booking.check_out_date + 1.day} if booking.check_in_date.present?
+      bookings << {id: booking.id, title: "#{booking.guest_name}  #{!booking.approved? ? 'event is '+booking.status.titleize : ''  }", start: booking.check_in_date, end: booking.check_out_date + 1.day} if booking.check_in_date.present?
     end
     gon.bookings = bookings
   end
@@ -15,22 +14,21 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
     session[:hotel_id] = params[:hotel_id]
-    @hotel = current_hotel
-    @single = @hotel.single_bedroom_num.to_i
-    @double = @hotel.double_bedroom_num.to_i
-    @suite = @hotel.suite_room_num.to_i
+    @hotel     = current_hotel
+    @single    = @hotel.single_bedroom_num.to_i
+    @double    = @hotel.double_bedroom_num.to_i
+    @suite     = @hotel.suite_room_num.to_i
     @dormitory = @hotel.dormitory_room_num.to_i
   end
 
   def create
     authorize unless signed_in?
-    @hotel    = current_hotel
-    @booking  = @hotel.bookings.build(book_params)
+    @booking  = current_hotel.bookings.build(book_params)
     @booking.user_id = current_user.id
     if @booking.save
-      ConfirmMailer.confirm_email(current_user, @booking).deliver
+      ConfirmMailer.inform_email(current_user, @booking).deliver
       AdminMailMailer.admin_email(User.admin, current_user, @booking).deliver
-      alter_rooms(@hotel)
+      alter_rooms(current_hotel)
       redirect_to bookings_path, flash: { success: "Booked successfully!" }
     else
       flash.now[:error] = "Couldn't make the booking."
@@ -42,22 +40,20 @@ class BookingsController < ApplicationController
   end
 
   def update_status
-    booking = Booking.find(params[:id])
-    booking.update(status: params[:status])
+    @booking.update(status: params[:status])
+    if @booking.rejected?
+      rewise_room_hotel(@booking)
+      ConfirmMailer.rejected_email(current_user, @booking).deliver
+    elsif @booking.approved?
+      ConfirmMailer.approved_email(current_user, @booking).deliver
+    end
     redirect_to(action: :client_bookings)
-    # redirect_to client_bookings_bookings_path, notice: 'Booking has been Updated'
   end
 
 
   def destroy
-    booking = Booking.find(params[:id])
-    hotel = booking.hotel
-    hotel.single_bedroom_num += booking.single_bedroom_num
-    hotel.double_bedroom_num += booking.double_bedroom_num
-    hotel.suite_room_num += booking.suite_room_num
-    hotel.dormitory_room_num += booking.dormitory_room_num
-    hotel.save
-    booking.destroy
+    rewise_room_hotel(@booking)
+    @booking.destroy
     redirect_to(action: :client_bookings)
   end
 
@@ -74,5 +70,20 @@ class BookingsController < ApplicationController
     @booking.alter_rooms_booked(hotel)
     @booking.total_price_of_booking(hotel)
   end
+
+  def get_booking
+    @booking = Booking.find(params[:id])
+  end
+
+  def rewise_room_hotel(booking)
+    hotel = booking.hotel
+    hotel.single_bedroom_num += booking.single_bedroom_num
+    hotel.double_bedroom_num += booking.double_bedroom_num
+    hotel.suite_room_num     += booking.suite_room_num
+    hotel.dormitory_room_num += booking.dormitory_room_num
+    hotel.save
+  end
+
+
 
 end

@@ -1,0 +1,9 @@
+<h1>Waiting for the approval of booking to <%= @user.name %></h1>
+
+<p>
+  <%= @greeting %> <%= @user.name %>, Your Reservation has details has been sent to Admin for
+  <%= @booking.num_of_guests %> number of guests, for the hotel
+  <%= @booking.hotel.name %> between the dates from <%= @booking.check_in_date %> to <%= @booking.check_out_date %>
+  Please wait for the response of email.
+  Thanks
+</p>

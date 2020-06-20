@@ -1,0 +1,9 @@
+<h1>Rejection of booking to <%= @user.name %></h1>
+
+<p>
+  <%= @greeting %> <%= @user.name %>, Sorry, Your Booking has been rejected by the Admin for
+  <%= @booking.num_of_guests %> number of guests, for the hotel
+  <%= @booking.hotel.name %> between the dates from <%= @booking.check_in_date %> to <%= @booking.check_out_date %>
+  You can Contact with the Administration.
+  Thanks
+</p>

@@ -17,10 +17,10 @@
       <td><%= booking.guest_name %> |</td>
       <td><%= booking.check_in_date %> | </td>
       <td><%= booking.check_out_date %> |</td>
-      <td><%= booking.status.titleize %></td>
+      <td><%= booking.status.titleize %> | </td>
       <td class = "actions">
-        <%= link_to('Click to Approved', update_status_booking_path(booking, status: :approved), class: "action show") %> |
-        <%= link_to('Click to Rejected', update_status_booking_path(booking, status: :rejected), class: "action show") %> |
+        <%= link_to('Click to Approved |', update_status_booking_path(booking, status: :approved), class: "action show") if booking.rejected? || booking.pending? %>
+        <%= link_to('Click to Rejected |', update_status_booking_path(booking, status: :rejected), class: "action show") if booking.approved? || booking.pending? %>
         <%= link_to("Click to DELETE", booking_path(booking), data: {confirm: "ARE YOU SURE?"}, method: :delete, class: "action delete") %>
       </td>
     </tr>

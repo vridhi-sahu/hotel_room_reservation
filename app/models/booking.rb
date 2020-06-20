@@ -45,6 +45,7 @@ class Booking < ApplicationRecord
     self.update_attributes(total: total_price)
   end
 
+
 # Using cronjob to call release_rooms method every day at 11:30a.m (config/schedule.rb) in production evironment.
 def self.release_rooms
 
