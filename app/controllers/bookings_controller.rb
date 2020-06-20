@@ -84,6 +84,9 @@ class BookingsController < ApplicationController
     hotel.save
   end
 
+  # def set_null_booking(booking)
+  #   booking.udpate(single_bedroom_num: 0,double_bedroom_num: 0,suite_room_num: 0,dormitory_room_num: 0)
+  # end
 
 
 end
