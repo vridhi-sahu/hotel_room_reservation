@@ -33,7 +33,7 @@ gem "underscore-rails"
 gem "whenever", require: false
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
-gem 'gon', '~> 6.2', '>= 6.2.1'
+gem 'gon', '~> 6.4'
 
 
 group :development, :test do
